@@ -19,4 +19,25 @@ class WEB_UTILITY():
             self.driver.find_element(By.ID, 'password').send_keys(password)
         self.driver.find_element(By.ID, 'loginBtn').click()
 
+    def get_device_list(self):
+        time.sleep(1)
+        val_list = []
+        values = self.driver.find_elements(By.CLASS_NAME, 'field-value')
+        i = 0
+        for item in values:
+            val_list.append(item.text)
+            i += 1
+            if i % 3 == 0:
+                break
+        return val_list
+    def delete_last_added_dev(self):
+        time.sleep(1)
+        del_btn = self.driver.find_element(By.CSS_SELECTOR,'.result-list-item-btn-bar>span.btn-no-border')
+        if not del_btn:
+            return False
+        del_btn.click()
+        self.driver.switch_to.alert.accept()
+
+
+
 web_utility = WEB_UTILITY()
