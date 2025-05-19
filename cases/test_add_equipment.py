@@ -7,7 +7,7 @@ import pytest
 def test_add_equipment_locker(login_ready,del_dev):
     web_utility.driver.find_element(By.XPATH,'/html/body/ul/li[2]/a').click()
     add_btn = web_utility.driver.find_element(By.CLASS_NAME, 'btn')
-    with open('devices_to_add.txt',encoding='utf-8') as f:
+    with open(r'D:\SeekJob\elife\elife_auto\cases\devices_to_add.txt',encoding='utf-8') as f:
         for line in f:
             line.strip()
             if line:
